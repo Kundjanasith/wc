@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<meta charset="utf-8" /> 
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<style>
+    body {
+        // background: #eee;
+        font: 12px Lucida sans, Arial, Helvetica, sans-serif;
+        color: #333;
+        text-align: center;
+    }
+
+    a {
+        color: #2A679F;
+    }
+    /*========*/
+
+    .form-wrapper {
+        background-color: #f6f6f6;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
+        background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
+        background-image: -moz-linear-gradient(top, #f6f6f6, #eae8e8);
+        background-image: -ms-linear-gradient(top, #f6f6f6, #eae8e8);
+        background-image: -o-linear-gradient(top, #f6f6f6, #eae8e8);
+        background-image: linear-gradient(top, #f6f6f6, #eae8e8);
+        border-color: #dedede #bababa #aaa #bababa;
+        border-style: solid;
+        border-width: 1px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+        -moz-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+        box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
+        margin: 50px auto;
+        overflow: hidden;
+        padding: 8px;
+        width: 100px;
+    }
+
+    .form-wrapper #search {
+        border: 1px solid #CCC;
+        -webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
+        -moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
+        box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #999;
+        float: left;
+        font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
+        height: 20px;
+        padding: 10px;
+        width: 320px;
+    }
+
+    .form-wrapper #search:focus {
+        border-color: #aaa;
+        -webkit-box-shadow: 0 1px 1px #bbb inset;
+        -moz-box-shadow: 0 1px 1px #bbb inset;
+        box-shadow: 0 1px 1px #bbb inset;
+        outline: 0;
+    }
+
+    .form-wrapper #search:-moz-placeholder,
+    .form-wrapper #search:-ms-input-placeholder,
+    .form-wrapper #search::-webkit-input-placeholder {
+        color: #999;
+        font-weight: normal;
+    }
+
+    .form-wrapper #submit {
+        background-color: #0483a0;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#31b2c3), to(#0483a0));
+        background-image: -webkit-linear-gradient(top, #31b2c3, #0483a0);
+        background-image: -moz-linear-gradient(top, #31b2c3, #0483a0);
+        background-image: -ms-linear-gradient(top, #31b2c3, #0483a0);
+        background-image: -o-linear-gradient(top, #31b2c3, #0483a0);
+        background-image: linear-gradient(top, #31b2c3, #0483a0);
+        border: 1px solid #00748f;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
+        -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
+        color: #fafafa;
+        cursor: pointer;
+        height: 42px;
+        float: right;
+        font: 15px Arial, Helvetica;
+        padding: 0;
+        //text-transform: uppercase;
+        text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+        width: 100px;
+    }
+
+    .form-wrapper #submit:hover,
+    .form-wrapper #submit:focus {
+        background-color: #31b2c3;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#0483a0), to(#31b2c3));
+        background-image: -webkit-linear-gradient(top, #0483a0, #31b2c3);
+        background-image: -moz-linear-gradient(top, #0483a0, #31b2c3);
+        background-image: -ms-linear-gradient(top, #0483a0, #31b2c3);
+        background-image: -o-linear-gradient(top, #0483a0, #31b2c3);
+        background-image: linear-gradient(top, #0483a0, #31b2c3);
+    }
+
+    .form-wrapper #submit:active {
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+        -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+        outline: 0;
+    }
+
+    .form-wrapper #submit::-moz-focus-inner {
+        border: 0;
+    }
+	
+	.headtb {
+        text-align: center;
+        background-color: #838B8B;
+        color: #FFFFFF;
+    }
+	
+	h1 {
+    font-family: verdana;
+    font-size: 300%;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="static/css/jquery.dataTables.min.css">
+<script language="JavaScript" type="text/javascript" src="static/js/jquery-1.12.3.js"></script>
+<script language="JavaScript" type="text/javascript" src="static/js/jquery.dataTables.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="static/js/d3.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="static/js/d3.layout.cloud.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<br>
+<h1>Word Cloud</h1>
+<br>
+<div style="margin-left: -15px; margin-right: -15px;">
+<div style="width: 100%;float: left;">
+	<div style="width: 50%;float: left;">
+        <div id="cloud"></div>
+    </div>
+    <div style="width: 50%;float: left;">
+	 <div style="margin-right:30px;">
+        <table id="datatableModel" class="table table-advanced table-bordered" cellspacing="0" width="100%" >
+            <thead class="blue">
+				<tr>
+                    <th class="headtb">Text</th>
+					<th class="headtb">Num</th>
+				</tr>
+            </thead>
+            <tbody>
+			{% if word_data: %}
+				{% for data in word_data: %}
+			    	<tr>
+					<td>{{ data['text'].decode('utf8') }}</td>
+					<td>{{ data['size'] | tojson }}</td>
+				</tr>
+				{% endfor %}
+			
+			{% endif %}
+            </tbody>
+        </table>
+		</div>
+    </div>
+</div>
+<div id="container" style="min-width: 300px; height: 400px; margin: 0 auto"></div>
+</div> 
+<!--form id="myForm" class="form-wrapper">
+    <input type="text" id="search" placeholder="Search for..." required>
+        <button id="submit" type="submit">Refresh</button>
+</form-->
+
+
+<script language="javascript">
+            var word_datas = {{ word_data | tojson }};
+			var num = {{ max_value }};
+			var word_datas2 = {{ word_data2 | tojson }};
+			//console.log(num);
+           // console.log(word_datas);
+            var width = 500;
+            var height = 400;
+            var fill = d3.scale.category20();
+            d3.layout.cloud()
+            .size([width, height])
+            .words(word_datas)
+            .rotate(function() {
+            return ~~(Math.random() * 2) * 90;
+            })
+            .font("Impact")
+            .fontSize(function(d) {
+            return (d.size*100)/(num*1);
+            })
+            .on("end", drawSkillCloud)
+            .start();
+// Finally implement `drawSkillCloud`, which performs the D3 drawing:
+
+            // apply D3.js drawing API
+                    function drawSkillCloud(words) {
+                    d3.select("#cloud").append("svg")
+                            .attr("width", width)
+                            .attr("height", height)
+                            .append("g")
+                            .attr("transform", "translate(" + ~~(width / 2) + "," + ~~(height / 2) + ")")
+                            .selectAll("text")
+                            .data(words)
+                            .enter().append("text")
+                            .style("font-size", function(d) {
+                            return d.size + "px";
+                            })
+                            .style("-webkit-touch-callout", "none")
+                            .style("-webkit-user-select", "none")
+                            .style("-khtml-user-select", "none")
+                            .style("-moz-user-select", "none")
+                            .style("-ms-user-select", "none")
+                            .style("user-select", "none")
+                            .style("cursor", "default")
+                            .style("font-family", "Impact")
+                            .style("fill", function(d, i) {
+                            return fill(i);
+                            })
+                            .attr("text-anchor", "middle")
+                            .attr("transform", function(d) {
+                            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                            })
+                            .text(function(d) {
+                            return d.text;
+                            });
+                    }
+
+// set the viewbox to content bounding box (zooming in on the content, effectively trimming whitespace)
+
+            var svg = document.getElementsByTagName("svg")[0];
+                    var bbox = svg.getBBox();
+                    var viewBox = [bbox.x, bbox.y, bbox.width, bbox.height].join(" ");
+                    svg.setAttribute("viewBox", viewBox);
+                    $(document).ready(function() {
+            $('button').click(function() {
+            $.ajax({
+            url: "searchdata",
+                    data: { search: $('#search').val() },
+                    type: 'POST',
+                    success: function(response) {
+                    console.log(response);
+                    }
+            });
+            });
+                    });
+					
+	$(document).ready(function() {
+		$('#datatableModel').DataTable({
+                "paging": true,
+                "info": true,
+                "bLengthChange": false,
+                "bFilter": false,
+                "ordering": true,
+                "destroy": true
+        });
+		
+		$('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'คำที่แสดงในมติรัฐมนตรี  10 อันดับแรก'
+        },
+        xAxis: {
+            type: 'category',
+            labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'NUM'
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            pointFormat: 'Num: <b>{point.y:.1f} </b>'
+        },
+        series: [{
+            name: 'Population',
+            data: word_datas2,
+            dataLabels: {
+                enabled: true,
+                rotation: -90,
+                color: '#FFFFFF',
+                align: 'right',
+                format: '{point.y:.1f}', // one decimal
+                y: 10, // 10 pixels down from the top
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        }]
+    });
+	});
+	
+</script>
