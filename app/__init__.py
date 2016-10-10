@@ -43,7 +43,7 @@ def isThai(chr):
 def wrap(txt):
   txt = PyICU.UnicodeString(txt)
   bd = PyICU.BreakIterator.createWordInstance(PyICU.Locale("th"))
-  bd.setText(txt)   
+  bd.setText(txt)
   lastPos = bd.first()
   retTxt = PyICU.UnicodeString("")
   txt_list = []
@@ -57,7 +57,7 @@ def wrap(txt):
       if(isThai(txt[currentPos-1])):
         if(currentPos < len(txt)):
           if(isThai(txt[currentPos])):
-            #This is dummy word seperator   
+            #This is dummy word seperator
             #retTxt += PyICU.UnicodeString("|||")
             #
             pass
@@ -75,15 +75,15 @@ def fullwrap(txt):
     for i in txt_list:
         #new_list.extend(wrap(i).split('|||'))
         new_list.extend(wrap(i))
-        
+
     return new_list
 
 @app.route('/searchdata', methods=['POST'])
 def searchdata():
     search =  request.form['search']
     return render_template("cloud.html", search)
-	
-	
+
+
 @app.route("/")
 def index():
     with spark_manager() as context:
@@ -94,9 +94,7 @@ def index():
         df2 = df.sort(df.size, ascending=False)
         tmp_list = df2.toJSON().map(lambda x:ast.literal_eval(x)).take(100)
         tmp_list2 = dataFinal.sortBy(lambda x:x[1], ascending=False).take(10)
-	max_value = dataFinal.max(lambda x : x[1])[1]   
+	max_value = dataFinal.max(lambda x : x[1])[1]
     return render_template("index.html", word_data = tmp_list, word_data2 = tmp_list2, max_value=max_value)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
-
-
